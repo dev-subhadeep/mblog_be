@@ -5,11 +5,15 @@ const updatePost = async (req, res) => {
     const { _id } = req.params
     const post = await Post.findById({ _id })
     if (post) {
-      updatedPost = await Post.findByIdAndUpdate(_id, req.body, { new: true })
-      res.status(200).send({
-        message: "Post updated successfully",
-        updated_post: updatedPost,
-      })
+      if (post.username === req.body.username) {
+        updatedPost = await Post.findByIdAndUpdate(_id, req.body, { new: true })
+        res.status(200).send({
+          message: "Post updated successfully",
+          updated_post: updatedPost,
+        })
+      } else {
+        res.status(400).send({ error: "You are not authorized" })
+      }
     } else {
       res.status(400).send({ error: "The post doesn't exist." })
     }

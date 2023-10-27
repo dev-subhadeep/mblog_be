@@ -1,5 +1,5 @@
 const express = require("express")
-const connection = require("./db")
+const connection = require("./utils/db")
 const postsRouter = require("./routes/posts.routes")
 const userRouter = require("./routes/users.routes")
 const app = express()
