@@ -4,6 +4,8 @@ const postSchema = mongoose.Schema(
   {
     title: String,
     body: String,
+    userID: String,
+    username: String,
   },
   {
     timestamps: true,
