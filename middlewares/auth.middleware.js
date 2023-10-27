@@ -6,7 +6,9 @@ const auth = (req, res, next) => {
     const token = req.headers.authorization.split("Bearer ")[1]
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      console.log(decoded)
+      const { userID, username } = decoded
+      req.body.userID = userID
+      req.body.username = username
       next()
     } else {
       res.status(400).send({ error: "Please log in." })
