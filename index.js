@@ -4,7 +4,9 @@ const postsRouter = require("./routes/posts.routes")
 const userRouter = require("./routes/users.routes")
 const app = express()
 require("dotenv").config()
+const cors = require("cors")
 
+app.use(cors())
 app.use(express.json())
 
 app.get("/", (req, res) => {
