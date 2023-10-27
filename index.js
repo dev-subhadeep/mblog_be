@@ -1,6 +1,7 @@
 const express = require("express")
 const connection = require("./db")
 const postsRouter = require("./routes/posts.routes")
+const userRouter = require("./routes/users.routes")
 const app = express()
 require("dotenv").config()
 
@@ -11,6 +12,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/posts", postsRouter)
+app.use("/user", userRouter)
 
 app.listen(process.env.PORT, async () => {
   try {
